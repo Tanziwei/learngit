@@ -24,9 +24,9 @@ class CFunctionParser:
     def __init__(self):
         # Regex patterns for parsing
         self.function_id_pattern = r'@note\s+Function\s+ID:\s*([A-Z_0-9]+)'
-        self.function_signature_pattern = r'(\w+(?:\s*\*)*)\s+(\w+)\s*\(([^)]*)\)'
+        self.function_signature_pattern = r'((?:const\s+)?(?:volatile\s+)?(?:static\s+)?(?:inline\s+)?\w+(?:\s*\*)*)\s+(\w+)\s*\(([^)]*)\)'
         self.param_pattern = r'@param\s+(\w+)\s+(.*?)(?=@param|@return|$)'
-        self.return_pattern = r'@return\s+(\w+(?:\s*\*)*)\s+(.*?)(?=@param|@return|$)'
+        self.return_pattern = r'@return\s+((?:const\s+)?(?:volatile\s+)?(?:static\s+)?(?:inline\s+)?\w+(?:\s*\*)*)\s+(.*?)(?=@param|@return|$)'
         
     def find_c_files(self, directory: str) -> List[str]:
         """Find all .c files in the given directory"""
